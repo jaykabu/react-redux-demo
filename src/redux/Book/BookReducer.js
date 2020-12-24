@@ -9,7 +9,7 @@ const bookReducer = (state= initialState, action) => {
         case "BUY_BOOK" :
             return {
                 ...state,
-                numberOfBook: state.numberOfBook - 1
+                numberOfBook: state.numberOfBook - action.payload
             }
         default: return state;
     }

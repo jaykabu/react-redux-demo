@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState }from 'react';
 import {connect} from 'react-redux';
 import {buyBook} from '../redux';
 
 const BookContainer = (props) => {
+
+    const [number , setNumber] = useState(1);
+
+    const handleChange = (e) => {
+        setNumber(e.target.value);
+    }
+
     return (
         <div>
-            <h1>Number Of Books - {props.numberOfBook}</h1>
-            <button onClick={props.buyBook}>Buy Book</button>
+            <h1>Book Conatiner</h1>
+            <h2>Number Of Books - {props.numberOfBook}</h2>
+            <input type="text" value={number} onChange={handleChange}/>
+            <button onClick={()=>props.buyBook(number)}>Buy {number} Book</button>
         </div>
     )
 };
@@ -19,8 +28,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchtoProps = (dispatch) => {
     return {
-        buyBook: function () {
-            dispatch(buyBook());
+        buyBook: function (number) {
+            dispatch(buyBook(number) );
         }
     }
 }

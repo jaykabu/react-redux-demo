@@ -10,6 +10,7 @@ function App() {
         <Provider store={store}>
             <div className="App">
                 <BookContainer/>
+                <hr/>
                 <HookBookContainer />
             </div>
         </Provider>
